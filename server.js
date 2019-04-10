@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Application-Key, Authorization");
     next();
   });
 
@@ -20,6 +20,7 @@ app.use(function(req, res, next) {
 const config = require('./config.js');
 const mongoose = require('mongoose');
 require('./product.routes.js')(app);
+require('./authorize.routes.js')(app);
 
 mongoose.Promise = global.Promise;
 
