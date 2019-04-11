@@ -25,3 +25,7 @@ If you installed mongo on a different port or with a different database than `pr
 ```
 
 Server should start on http://localhost:3000. App is using [nodemon](https://nodemon.io/) for hot reload.
+
+## Postman Collection
+
+The newly added User Methods can be found add to postman through this link: https://www.getpostman.com/collections/fc0d3e2ba1ebfd58f195
