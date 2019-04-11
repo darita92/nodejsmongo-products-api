@@ -9,9 +9,16 @@ How to create Restful CRUD API with Node.js MongoDB and Express
 
 ## Run
 
-### Optional
-
+> Optional
 If you installed mongo on a different port or with a different database than `products`, update MongoDB connection Url in `config.js` file
+
+### Seed Database with admin user
+
+```bash
+  $ node seed.js
+```
+
+### Run project
 
 ```bash
   $ npm start
