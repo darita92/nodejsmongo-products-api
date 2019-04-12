@@ -26,7 +26,8 @@ module.exports.authorize = (req, res) => {
             res.send({
                 success: true,
                 message: 'Authentication successful!',
-                token: token
+                token: token,
+                role: user.role
             });
         })
     } else {
