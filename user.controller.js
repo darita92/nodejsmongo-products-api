@@ -10,6 +10,7 @@ module.exports.authorize = (req, res) => {
             username,
             password
         }, (err, user) => {
+            console.log('User Found', user)
             if(err){
                 res.status(500).send({
                     success: false,
