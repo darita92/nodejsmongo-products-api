@@ -10,26 +10,34 @@ module.exports.authorize = (req, res) => {
             username,
             password
         }, (err, user) => {
-            console.log('User Found', user)
             if(err){
                 res.status(500).send({
                     success: false,
                     message: 'There was an error getting the user'
                 });
             }
-            let token = jwt.sign({ role: user.role, username: user.username },
-                config.secret,
-                {
-                    expiresIn: '24h' // expires in 24 hours
-                }
-            );
-            // return the JWT token for the future API calls
-            res.send({
-                success: true,
-                message: 'Authentication successful!',
-                token: token,
-                role: user.role
-            });
+
+            if(!user){
+                res.send({
+                    success: false,
+                    message: 'Authentication failed!'
+                });
+            }
+            else{
+                let token = jwt.sign({ role: user.role, username: user.username },
+                    config.secret,
+                    {
+                        expiresIn: '24h' // expires in 24 hours
+                    }
+                );
+                // return the JWT token for the future API calls
+                res.send({
+                    success: true,
+                    message: 'Authentication successful!',
+                    token: token,
+                    role: user.role
+                });
+            }
         })
     } else {
         res.status(400).send({
